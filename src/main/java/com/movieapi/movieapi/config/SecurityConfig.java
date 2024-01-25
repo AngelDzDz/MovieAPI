@@ -48,7 +48,6 @@ public class SecurityConfig {
                         .requestMatchers(
                                 "/signup",
                                 "/login",
-                                "/genres", //CHANGE!
                                 "/v2/api-docs",
                                 "/v3/api-docs",
                                 "/v3/api-docs/**",
