@@ -4,9 +4,11 @@ import com.movieapi.movieapi.entities.Movie;
 import com.movieapi.movieapi.exceptions.NoDataFoundException;
 import com.movieapi.movieapi.exceptions.ValidateServiceException;
 
+
 public class MovieValidator {
 
     public static void save(Movie movie) {
+
         if(movie.getGenre() == null || movie.getGenre().getId() == null) {
             throw new ValidateServiceException("El género es requerido!");
         }
@@ -36,15 +38,11 @@ public class MovieValidator {
             throw new ValidateServiceException("El estatus de la película es requerido");
         }
 
-       /* if(movie.getUser() == null || movie.getUser().getId() == null) {
-            throw new ValidateServiceException("El usuario es requerido!");
-        }*/
-
-        if(movie.getTitle().length() > 100) {
-            throw new ValidateServiceException("El título es demasiado largo (max 100 carácteres)");
+        if(movie.getTitle().length() > 50) {
+            throw new ValidateServiceException("El título es demasiado largo (max 50 carácteres)");
         }
-        if(movie.getDirector().length() > 100) {
-            throw new ValidateServiceException("El nombre del director es demasiado largo (max 100 carácteres)");
+        if(movie.getDirector().length() > 50) {
+            throw new ValidateServiceException("El nombre del director es demasiado largo (max 50 carácteres)");
         }
         if(movie.getDescription().length() > 100) {
             throw new ValidateServiceException("La descripción es demasiado larga (max 100 carácteres)");
@@ -64,6 +62,7 @@ public class MovieValidator {
     }
 
     public static void saveIsWatched(Movie movie) {
+        System.out.println(movie.getYearOfRelease());
         if(movie.getGenre() == null || movie.getGenre().getId() == null) {
             throw new ValidateServiceException("El género es requerido!");
         }
@@ -89,13 +88,12 @@ public class MovieValidator {
         if(movie.getStars() == null) {
             throw new ValidateServiceException("Las estrellas son requeridas");
         }
-
-
-        if(movie.getTitle().length() > 100) {
-            throw new ValidateServiceException("El título es demasiado largo (max 100 carácteres)");
+        
+        if(movie.getTitle().length() > 50) {
+            throw new ValidateServiceException("El título es demasiado largo (max 50 carácteres)");
         }
-        if(movie.getDirector().length() > 100) {
-            throw new ValidateServiceException("El nombre del director es demasiado largo (max 100 carácteres)");
+        if(movie.getDirector().length() > 50) {
+            throw new ValidateServiceException("El nombre del director es demasiado largo (max 50 carácteres)");
         }
         if(movie.getDescription().length() > 100) {
             throw new ValidateServiceException("La descripción es demasiado larga (max 100 carácteres)");

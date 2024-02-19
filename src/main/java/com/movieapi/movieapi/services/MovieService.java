@@ -113,6 +113,7 @@ public class MovieService {
 
             if(movie.getUser().getUsername().equals(user.getUsername())) {
                 movieRepository.delete(movie);
+                return;
             }
             throw new NoAuthorizationException("No tienes permisos para eliminar esta película!");
 
@@ -158,7 +159,6 @@ public class MovieService {
         try{
             MovieValidator.saveIsWatched(movie);
             Genre foundGenre = genreRepository.findById(movie.getGenre().getId()).orElseThrow(()->new NoDataFoundException("El género no existe!"));
-            //User foundUser = userRepository.findById(userID).orElseThrow(()-> new NoDataFoundException("El usuario no existe!"));
             User user = UserPrincipal.getTheUser();
             movie.setGenre(foundGenre);
             movie.setUser(user);

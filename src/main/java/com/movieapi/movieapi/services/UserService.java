@@ -114,6 +114,7 @@ public class UserService {
     public String generateToken(User user) {
         Date now = new Date();
         Date expiringDate = new Date(now.getTime()+(1000*60*60));
+        //Date expiringDate = new Date(now.getTime()+(1000*120));
 
         SecretKey key = Jwts.SIG.HS256.key().build();
         return Jwts.builder()
